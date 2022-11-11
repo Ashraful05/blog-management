@@ -25,7 +25,10 @@ Route::get('/dashboard', function () {
 require __DIR__.'/auth.php';
 
 Route::controller(AdminController::class)->group(function(){
-    Route::get('admin/logout','adminLogout')->name('admin.logout');
-    Route::get('admin/profile','adminProfile')->name('admin_profile');
-    Route::get('admin/profile/edit/{id}','adminEditProfile')->name('edit_profile');
+    Route::prefix('admin')->group(function(){
+        Route::get('logout','adminLogout')->name('admin.logout');
+        Route::get('profile','adminProfile')->name('admin_profile');
+        Route::get('profile/edit/{id}','adminEditProfile')->name('edit_profile');
+    });
+
 });
