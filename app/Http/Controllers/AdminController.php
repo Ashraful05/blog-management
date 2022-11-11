@@ -13,7 +13,11 @@ class AdminController extends Controller
         Auth::guard('web')->logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect('/login');
+        $notification = [
+          'alert-type'=>'success',
+          'message'=>"Successfully Logged out!"
+        ];
+        return redirect('/login')->with($notification);
     }
     public function adminProfile()
     {
@@ -41,8 +45,11 @@ class AdminController extends Controller
             $data['profile_image'] = $filename;
         }
         $data->save();
-
-        return redirect()->route('admin_profile');
+        $notification = [
+          'alert-type'=>'info',
+          'message'=>'Admin Profile Updated!!'
+        ];
+        return redirect()->route('admin_profile')->with($notification);
 
     }
 }

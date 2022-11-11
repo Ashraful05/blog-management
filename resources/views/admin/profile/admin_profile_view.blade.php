@@ -5,7 +5,7 @@
         <div class="col-md-12">
             <div class="card mt-2">
                 <center>
-                    <img class="rounded-circle avatar-xl" src="{{ asset('/backend') }}/assets/images/users/avatar-1.jpg" alt="Card image cap">
+                    <img class="rounded-circle avatar-xl" src="{{ !empty($adminData->profile_image)?url('upload/admin_images/'.$adminData->profile_image):url('upload/no_image.png') }}" alt="Card image cap">
                 </center>
                 <div class="card-body center-block">
                     <h4 class="card-title">Name: {{ $adminData->name }}</h4>
