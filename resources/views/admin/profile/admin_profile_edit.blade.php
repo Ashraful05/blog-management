@@ -10,7 +10,7 @@
 
                     <h4 class="card-title">Edit Profile Page </h4>
 
-                    <form method="post" action="" enctype="multipart/form-data">
+                    <form method="post" action="{{ route('update_profile',$editData->id) }}" enctype="multipart/form-data">
                         @csrf
 
                         <div class="row mb-3">
