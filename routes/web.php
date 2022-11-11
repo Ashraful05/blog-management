@@ -30,6 +30,8 @@ Route::controller(AdminController::class)->group(function(){
         Route::get('profile','adminProfile')->name('admin_profile');
         Route::get('profile/edit/{id}','adminEditProfile')->name('edit_profile');
         Route::post('profile/update/{id?}','adminUpdateProfile')->name('update_profile');
+        Route::get('password/change','passwordChange')->name('password_change');
+        Route::post('password/update','updatePassword')->name('password_update');
     });
 
 });
