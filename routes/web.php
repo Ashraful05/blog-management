@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\AdminController;
+use \App\Http\Controllers\Home\HomeSliderController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -32,6 +33,13 @@ Route::controller(AdminController::class)->group(function(){
         Route::post('profile/update/{id?}','adminUpdateProfile')->name('update_profile');
         Route::get('password/change','passwordChange')->name('password_change');
         Route::post('password/update','updatePassword')->name('password_update');
+    });
+
+});
+Route::controller(HomeSliderController::class)->group(function(){
+    Route::prefix('admin/slider/')->group(function(){
+        Route::get('view','viewSlider')->name('view_slider');
+        Route::post('update','updateSlider')->name('update_slider');
     });
 
 });
