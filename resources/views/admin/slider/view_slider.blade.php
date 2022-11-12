@@ -9,7 +9,6 @@
                 <div class="card-body">
 
                     <h4 class="card-title text-center">Home Slider Page </h4>
-
                     <form method="post" action="{{ route('update_slider') }}" enctype="multipart/form-data">
                         @csrf
                         <input type="hidden" name="id" value="{{ $viewSlider->id }}">
@@ -18,6 +17,9 @@
                             <div class="col-sm-10">
                                 <input name="title" class="form-control" type="text" value="{{ old('title',$viewSlider->title) }}"  id="example-text-input">
                             </div>
+                            @error('title')
+                                <span class="text-center text-danger">{{ $message }}</span>
+                            @enderror
                         </div>
                         <!-- end row -->
 
@@ -44,6 +46,9 @@
                             <div class="col-sm-10">
                                 <input name="home_slide" class="form-control" type="file" value="{{ old('home_slide',$viewSlider->home_slide) }}"  id="image">
                             </div>
+                            @error('home_slide')
+                                <span class="text-center text-danger">{{ $message }}</span>
+                            @enderror
                         </div>
                         <!-- end row -->
 
