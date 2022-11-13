@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\AdminController;
 use \App\Http\Controllers\Home\HomeSliderController;
+use \App\Http\Controllers\Home\AboutController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -42,4 +43,11 @@ Route::controller(HomeSliderController::class)->group(function(){
         Route::post('update','updateSlider')->name('update_slider');
     });
 
+});
+Route::controller(AboutController::class)->group(function (){
+    Route::prefix('about')->group(function (){
+        Route::get('view','viewAbout')->name('view_about');
+        Route::post('update','updateAbout')->name('update_about');
+        Route::get('front','frontAbout')->name('front_about');
+    });
 });
