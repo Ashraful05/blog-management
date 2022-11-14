@@ -52,6 +52,8 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{ route('view_about') }}">View About</a></li>
+                        <li><a href="{{ route('about_multi_image') }}">Add Multi Image</a></li>
+                        <li><a href="{{ route('all_multi_image') }}">All Multi Image</a></li>
                     </ul>
                 </li>
 

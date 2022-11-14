@@ -49,5 +49,12 @@ Route::controller(AboutController::class)->group(function (){
         Route::get('view','viewAbout')->name('view_about');
         Route::post('update','updateAbout')->name('update_about');
         Route::get('front','frontAbout')->name('front_about');
+//        Route::get('front/multi_image','frontMultiImage')->name('front_multi_image');
+        Route::get('multi_image','aboutMultiImage')->name('about_multi_image');
+        Route::post('save_multi_image','saveMultiImage')->name('save_multi_image');
+        Route::get('all/multi_image','allMultiImage')->name('all_multi_image');
+        Route::get('edit/multi_image/{id}','editMultiImage')->name('edit_multi_image');
+        Route::post('update/multi_image/{id}','updateMultiImage')->name('update_multi_image');
+        Route::get('delete/multi_image/{id}','deleteMultiImage')->name('delete_multi_image');
     });
 });
