@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\AdminController;
 use \App\Http\Controllers\Home\HomeSliderController;
 use \App\Http\Controllers\Home\AboutController;
+use \App\Http\Controllers\Home\PortfolioController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,7 +27,7 @@ Route::get('/dashboard', function () {
 
 require __DIR__.'/auth.php';
 
-Route::controller(AdminController::class)->group(function(){
+Route::controller(AdminController::class)->middleware('auth')->group(function(){
     Route::prefix('admin')->group(function(){
         Route::get('logout','adminLogout')->name('admin.logout');
         Route::get('profile','adminProfile')->name('admin_profile');
@@ -37,14 +38,14 @@ Route::controller(AdminController::class)->group(function(){
     });
 
 });
-Route::controller(HomeSliderController::class)->group(function(){
+Route::controller(HomeSliderController::class)->middleware(['auth'])->group(function(){
     Route::prefix('admin/slider/')->group(function(){
         Route::get('view','viewSlider')->name('view_slider');
         Route::post('update','updateSlider')->name('update_slider');
     });
 
 });
-Route::controller(AboutController::class)->group(function (){
+Route::controller(AboutController::class)->middleware('auth')->group(function (){
     Route::prefix('about')->group(function (){
         Route::get('view','viewAbout')->name('view_about');
         Route::post('update','updateAbout')->name('update_about');
@@ -56,5 +57,17 @@ Route::controller(AboutController::class)->group(function (){
         Route::get('edit/multi_image/{id}','editMultiImage')->name('edit_multi_image');
         Route::post('update/multi_image/{id}','updateMultiImage')->name('update_multi_image');
         Route::get('delete/multi_image/{id}','deleteMultiImage')->name('delete_multi_image');
+    });
+
+    Route::controller(PortfolioController::class)->middleware('auth')->group(function(){
+        Route::prefix('portfolio')->group(function(){
+            Route::get('all','allPortfolio')->name('all_portfolio');
+            Route::get('add','addPortfolio')->name('add_portfolio');
+            Route::post('save','savePortfolio')->name('save_portfolio');
+            Route::get('edit/{id}','editPortfolio')->name('edit_portfolio');
+            Route::post('update/{id}','updatePortfolio')->name('update_portfolio');
+            Route::get('delete/{id}','deletePortfolio')->name('delete_portfolio');
+            Route::get('details/{id}','portfolioDetails')->name('portfolio_details');
+        });
     });
 });

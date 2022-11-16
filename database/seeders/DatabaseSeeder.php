@@ -22,7 +22,8 @@ class DatabaseSeeder extends Seeder
         // ]);
         $this->call([
 //           HomeSlideSeeder::class,
-           AboutSeeder::class,
+//           AboutSeeder::class,
+        PortfolioSeeder::class,
         ]);
     }
 }
