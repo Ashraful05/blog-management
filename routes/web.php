@@ -45,11 +45,11 @@ Route::controller(HomeSliderController::class)->middleware(['auth'])->group(func
     });
 
 });
-Route::controller(AboutController::class)->middleware('auth')->group(function (){
+Route::controller(AboutController::class)->middleware('auth')->group(function(){
     Route::prefix('about')->group(function (){
         Route::get('view','viewAbout')->name('view_about');
         Route::post('update','updateAbout')->name('update_about');
-        Route::get('front','frontAbout')->name('front_about');
+        Route::get('front','frontAbout')->name('front_about')->withoutMiddleware('auth');
 //        Route::get('front/multi_image','frontMultiImage')->name('front_multi_image');
         Route::get('multi_image','aboutMultiImage')->name('about_multi_image');
         Route::post('save_multi_image','saveMultiImage')->name('save_multi_image');
@@ -58,16 +58,16 @@ Route::controller(AboutController::class)->middleware('auth')->group(function ()
         Route::post('update/multi_image/{id}','updateMultiImage')->name('update_multi_image');
         Route::get('delete/multi_image/{id}','deleteMultiImage')->name('delete_multi_image');
     });
-
-    Route::controller(PortfolioController::class)->middleware('auth')->group(function(){
-        Route::prefix('portfolio')->group(function(){
-            Route::get('all','allPortfolio')->name('all_portfolio');
-            Route::get('add','addPortfolio')->name('add_portfolio');
-            Route::post('save','savePortfolio')->name('save_portfolio');
-            Route::get('edit/{id}','editPortfolio')->name('edit_portfolio');
-            Route::post('update/{id}','updatePortfolio')->name('update_portfolio');
-            Route::get('delete/{id}','deletePortfolio')->name('delete_portfolio');
-            Route::get('details/{id}','portfolioDetails')->name('portfolio_details');
-        });
+});
+Route::controller(PortfolioController::class)->middleware('auth')->group(function(){
+    Route::prefix('portfolio')->group(function(){
+        Route::get('all','allPortfolio')->name('all_portfolio');
+        Route::get('add','addPortfolio')->name('add_portfolio');
+        Route::post('save','savePortfolio')->name('save_portfolio');
+        Route::get('edit/{id}','editPortfolio')->name('edit_portfolio');
+        Route::post('update/{id}','updatePortfolio')->name('update_portfolio');
+        Route::get('delete/{id}','deletePortfolio')->name('delete_portfolio');
+        Route::get('front/details/{id}','portfolioDetails')->name('portfolio_details')->withoutMiddleware('auth');
     });
 });
+
