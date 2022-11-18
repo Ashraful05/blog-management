@@ -432,7 +432,7 @@
     </section>
     <!-- testimonial-area-end -->
 
-    <!-- blog-area -->
+    <!-- blog_category-area -->
     <section class="blog blog__style__two">
         <div class="container">
             <div class="row gx-0 justify-content-center">
@@ -487,7 +487,7 @@
             </div>
         </div>
     </section>
-    <!-- blog-area-end -->
+    <!-- blog_category-area-end -->
 
     <!-- contact-area -->
     <section class="homeContact">
