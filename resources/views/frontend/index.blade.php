@@ -1,5 +1,5 @@
 @extends('frontend.master')
-@section('title','Inventory Management')
+@section('title','Blog Management')
 @section('main_content')
     <!-- banner-area -->
     @php

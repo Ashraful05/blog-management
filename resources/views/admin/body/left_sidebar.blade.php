@@ -73,7 +73,7 @@
                         <span>Blog Page</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{ route('blog_category.index') }}">All Blog</a></li>
+                        <li><a href="{{ route('blog.index') }}">All Blog</a></li>
                     </ul>
                 </li>
 

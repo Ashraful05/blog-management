@@ -74,7 +74,7 @@ Route::group(['middleware'=>'auth'],function(){
         });
     });
     Route::controller(BlogCategoryController::class)->group(function (){
-        Route::prefix('blog_category-category')->group(function(){
+        Route::prefix('blog-category')->group(function(){
             Route::get('all','allBlogCategory')->name('all_blog_category');
             Route::get('add','addBlogCategory')->name('add_blog_category');
             Route::post('save','saveBlogCategory')->name('save_blog_category');
@@ -83,7 +83,7 @@ Route::group(['middleware'=>'auth'],function(){
             Route::get('delete/{id}','deleteBlogCategory')->name('delete_blog_category');
         });
     });
-    Route::resource('blog_category',BlogController::class);
+    Route::resource('blog',BlogController::class);
 });
 
 

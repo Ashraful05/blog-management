@@ -29,7 +29,7 @@ class BlogCategoryController extends Controller
         ]);
         $notification=[
           'alert-type'=>'success',
-          'message'=>'Blog info saved!!!!'
+          'message'=>'Blog Category info saved!!!!'
         ];
         return redirect()->route('all_blog_category')->with($notification);
     }
@@ -43,7 +43,7 @@ class BlogCategoryController extends Controller
         BlogCategory::findOrFail($id)->update(['blog_category'=>$request->blog_category]);
         $notification=[
             'alert-type'=>'info',
-            'message'=>'Blog info updated!!!!'
+            'message'=>'Blog Category info updated!!!!'
         ];
         return redirect()->route('all_blog_category')->with($notification);
     }
@@ -52,7 +52,7 @@ class BlogCategoryController extends Controller
         BlogCategory::find($id)->delete();
         $notification=[
             'alert-type'=>'error',
-            'message'=>'Blog info deleted!!!!'
+            'message'=>'Blog Category info deleted!!!!'
         ];
         return redirect()->route('all_blog_category')->with($notification);
     }
