@@ -42,10 +42,10 @@
                                 <td>
                                     <a href="{{ route('blog.edit',$item->id) }}" class="btn btn-info" title="Edit Data">  <i class="fas fa-edit"></i> </a>
 {{--                                    <a href="{{ route('blog.destroy',$blog->id) }}" id="delete" class="btn btn-danger sm" title="Delete Data"><i class="fas fa-trash-alt"></i></a>--}}
-                                    <form action="{{ route('blog.destroy',$item->id) }}" method="post">
+                                    <form action="{{ route('blog.destroy',$item->id) }}" id="form_select" method="post">
                                         @csrf
                                         @method('delete')
-                                        <button type="submit" id="delete"  class="btn btn-danger" title="Delete Data" onclick="return confirm('Are you sure to delete?')">  <i class="fas fa-trash-alt"></i> </button>
+                                        <button type="submit" id=""  class="btn btn-danger" title="Delete Data" >  <i class="fas fa-trash-alt"></i> </button>
                                     </form>
                                 </td>
 

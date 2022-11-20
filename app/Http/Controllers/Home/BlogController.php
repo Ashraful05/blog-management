@@ -62,6 +62,7 @@ class BlogController extends Controller
                 'blog_title'=>$request->blog_title,
                 'blog_tags'=>$request->blog_tags,
                 'blog_description'=>$request->blog_description,
+                'created_at'=>Carbon::now(),
             ]);
             $notification=[
                 'alert-type'=>'success',

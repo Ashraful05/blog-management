@@ -112,7 +112,7 @@
 <script src="{{ asset('backend/assets/js/pages/datatables.init.js') }}"></script>
 
 <script src="{{ asset('/backend') }}/assets/js/pages/dashboard.init.js"></script>
-{{--<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>--}}
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="{{ asset('backend/assets/js/code.js') }}"></script>
 <!-- App js -->
 
