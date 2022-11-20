@@ -10,7 +10,7 @@
         .bootstrap-tagsinput .tag{
             margin-right: 2px;
             color: #b70000;
-            font-weight: 700px;
+            font-weight: 700;
         }
     </style>
 

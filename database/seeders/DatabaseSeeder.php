@@ -23,7 +23,8 @@ class DatabaseSeeder extends Seeder
         $this->call([
 //           HomeSlideSeeder::class,
 //           AboutSeeder::class,
-        PortfolioSeeder::class,
+//        PortfolioSeeder::class,
+        FooterSeeder::class,
         ]);
     }
 }

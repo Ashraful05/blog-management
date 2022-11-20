@@ -6,9 +6,10 @@
     <div class="row">
         <div class="col-12">
             <div class="card mt-0">
-                <div class="card-body">
-
+                <div class="card-header">
                     <h4 class="card-title text-center">Home About Page </h4>
+                </div>
+                <div class="card-body">
                     <form method="post" action="{{ route('update_about') }}" enctype="multipart/form-data">
                         @csrf
                         <input type="hidden" name="id" value="{{ $about->id }}">

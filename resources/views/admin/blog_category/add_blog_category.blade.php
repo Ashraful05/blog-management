@@ -5,8 +5,8 @@
     <div class="row">
         <div class="col-12">
             <div class="card">
-                <div class="card-body">
-                    <h4 class="card-title text-center mb-3">Add Blog Category</h4>
+                <div class="card-header">
+                    <h4 class="card-title text-center">Add Blog Category</h4>
                     <a href="{{ route('all_blog_category') }}"><button type="submit" class="btn btn-primary" style="float: right">All Blog Category </button></a>
                     @if($errors->any())
                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -18,9 +18,12 @@
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
                     @endif
+                </div>
+                <div class="card-body">
+
                     <form action="{{ route('save_blog_category') }}" method="post">
                         @csrf
-                        <div class="row mb-3">
+                        <div class="row">
                             <label for="example-text-input" class="col-sm-2 col-form-label">Blog Category Name</label>
                             <div class="col-sm-10">
                                 <input type="text" name="blog_category" value="{{ old('blog_category') }}" class="form-control" id="example-text-input">

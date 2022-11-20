@@ -76,6 +76,15 @@
                         <li><a href="{{ route('blog.index') }}">All Blog</a></li>
                     </ul>
                 </li>
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="ri-profile-line"></i>
+                        <span>Footer Page Setup</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{ route('footer_all') }}">Footer Setup</a></li>
+                    </ul>
+                </li>
 
 
                 <li class="menu-title">Pages</li>

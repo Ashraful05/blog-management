@@ -7,6 +7,7 @@ use \App\Http\Controllers\Home\AboutController;
 use \App\Http\Controllers\Home\PortfolioController;
 use \App\Http\Controllers\Home\BlogCategoryController;
 use \App\Http\Controllers\Home\BlogController;
+use \App\Http\Controllers\Home\FooterController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -53,7 +54,6 @@ Route::group(['middleware'=>'auth'],function(){
             Route::get('view','viewAbout')->name('view_about');
             Route::post('update','updateAbout')->name('update_about');
             Route::get('front','frontAbout')->name('front_about')->withoutMiddleware('auth');
-//        Route::get('front/multi_image','frontMultiImage')->name('front_multi_image');
             Route::get('multi_image','aboutMultiImage')->name('about_multi_image');
             Route::post('save_multi_image','saveMultiImage')->name('save_multi_image');
             Route::get('all/multi_image','allMultiImage')->name('all_multi_image');
@@ -84,6 +84,14 @@ Route::group(['middleware'=>'auth'],function(){
         });
     });
     Route::resource('blog',BlogController::class);
+
+    Route::controller(FooterController::class)->group(function(){
+        Route::prefix('footer')->group(function(){
+            Route::get('all','FooterSetup')->name('footer_all');
+            Route::post('update','FooterUpdate')->name('footer_update');
+        });
+    });
+
 });
 
 
