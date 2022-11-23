@@ -8,6 +8,7 @@ use \App\Http\Controllers\Home\PortfolioController;
 use \App\Http\Controllers\Home\BlogCategoryController;
 use \App\Http\Controllers\Home\BlogController;
 use \App\Http\Controllers\Home\FooterController;
+use \App\Http\Controllers\Home\ContactController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -89,6 +90,15 @@ Route::group(['middleware'=>'auth'],function(){
         Route::prefix('footer')->group(function(){
             Route::get('all','FooterSetup')->name('footer_all');
             Route::post('update','FooterUpdate')->name('footer_update');
+        });
+    });
+
+    Route::controller(ContactController::class)->group(function(){
+        Route::prefix('contact')->group(function(){
+            Route::get('front','Contact')->name('contact_me')->withoutMiddleware('auth');
+            Route::post('save','SaveContact')->name('save_contact')->withoutMiddleware('auth');
+            Route::get('all/message','AllContactMessage')->name('all_contact_message');
+            Route::get('delete/{id}','DeleteContactMessage')->name('delete_contact_message');
         });
     });
 
