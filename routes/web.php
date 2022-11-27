@@ -6,6 +6,7 @@ use \App\Http\Controllers\Home\HomeSliderController;
 use \App\Http\Controllers\Home\AboutController;
 use \App\Http\Controllers\Home\PortfolioController;
 use \App\Http\Controllers\Home\BlogCategoryController;
+use \App\Http\Controllers\Home\BlogDetailsController;
 use \App\Http\Controllers\Home\BlogController;
 use \App\Http\Controllers\Home\FooterController;
 use \App\Http\Controllers\Home\ContactController;
@@ -20,9 +21,9 @@ use \App\Http\Controllers\Home\ContactController;
 |
 */
 
-Route::get('/', function () {
-    return view('frontend.index');
-});
+//Route::get('/', function () {
+//    return view('frontend.index');
+//});
 
 Route::get('/dashboard', function () {
 //    return view('dashboard');
@@ -65,6 +66,7 @@ Route::group(['middleware'=>'auth'],function(){
     });
     Route::controller(PortfolioController::class)->group(function(){
         Route::prefix('portfolio')->group(function(){
+            Route::get('/','frontPortfolio')->name('front_portfolio')->withoutMiddleware('auth');
             Route::get('all','allPortfolio')->name('all_portfolio');
             Route::get('add','addPortfolio')->name('add_portfolio');
             Route::post('save','savePortfolio')->name('save_portfolio');
@@ -86,6 +88,11 @@ Route::group(['middleware'=>'auth'],function(){
     });
     Route::resource('blog',BlogController::class);
 
+    Route::controller(BlogDetailsController::class)->group(function(){
+        Route::get('blog_details/{id}','blogDetails')->name('blog_details')->withoutMiddleware('auth');
+        Route::get('category_wise_blog/{id}','CategoryWiseBlog')->name('category_wise_blog')->withoutMiddleware('auth');
+        Route::get('frontend_blog','frontendBlog')->name('frontend_blog')->withoutMiddleware('auth');
+    });
     Route::controller(FooterController::class)->group(function(){
         Route::prefix('footer')->group(function(){
             Route::get('all','FooterSetup')->name('footer_all');
@@ -101,7 +108,9 @@ Route::group(['middleware'=>'auth'],function(){
             Route::get('delete/{id}','DeleteContactMessage')->name('delete_contact_message');
         });
     });
-
+});
+Route::controller(\App\Http\Controllers\Demo\DemoController::class)->group(function(){
+    Route::get('/','HomeMain')->name('home');
 });
 
 

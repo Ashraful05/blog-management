@@ -21,11 +21,11 @@
                 </div>
                 <div class="card-body">
 
-                    <form action="{{ route('save_blog_category') }}" method="post">
+                    <form action="{{ route('save_blog_category') }}" method="post" id="myForm">
                         @csrf
                         <div class="row">
                             <label for="example-text-input" class="col-sm-2 col-form-label">Blog Category Name</label>
-                            <div class="col-sm-10">
+                            <div class="form-group col-sm-10">
                                 <input type="text" name="blog_category" value="{{ old('blog_category') }}" class="form-control" id="example-text-input">
                             </div>
                         </div>
@@ -36,15 +36,32 @@
         </div>
     </div>
 
-    <script>
-        $(document).ready(function(){
-            $('#image').change(function(e){
-                var reader = new FileReader();
-                reader.onload = function(e){
-                    $('#showImage').attr('src',e.target.result);
-                }
-                reader.readAsDataURL(e.target.files['0']);
+    <script type="text/javascript">
+        $(document).ready(function (){
+            $('#myForm').validate({
+                rules: {
+                    blog_category: {
+                        required : true,
+                    },
+                },
+                messages :{
+                    blog_category: {
+                        required : 'Please Enter Blog Category',
+                    },
+                },
+                errorElement : 'span',
+                errorPlacement: function (error,element) {
+                    error.addClass('invalid-feedback');
+                    element.closest('.form-group').append(error);
+                },
+                highlight : function(element, errorClass, validClass){
+                    $(element).addClass('is-invalid');
+                },
+                unhighlight : function(element, errorClass, validClass){
+                    $(element).removeClass('is-invalid');
+                },
             });
         });
+
     </script>
 @endsection
